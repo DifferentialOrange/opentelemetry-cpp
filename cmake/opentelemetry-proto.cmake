@@ -65,7 +65,7 @@ else()
   endif()
 endif()
 
-include(${PROJECT_SOURCE_DIR}/cmake/proto-options-patch.cmake)
+include(${PROJECT_SOURCE_DIR}/opentelemetry-cpp/cmake/proto-options-patch.cmake)
 
 set(COMMON_PROTO "${PROTO_PATH}/opentelemetry/proto/common/v1/common.proto")
 set(RESOURCE_PROTO
