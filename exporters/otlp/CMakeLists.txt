@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 add_library(
-  opentelemetry_otlp_recordable
+  opentelemetry_otlp_recordable SHARED
   src/otlp_environment.cc src/otlp_log_recordable.cc src/otlp_recordable.cc
   src/otlp_populate_attribute_utils.cc src/otlp_recordable_utils.cc
   src/otlp_metric_utils.cc)
@@ -27,7 +27,7 @@ target_link_libraries(opentelemetry_otlp_recordable
 
 if(WITH_OTLP_GRPC)
   find_package(gRPC REQUIRED)
-  add_library(opentelemetry_exporter_otlp_grpc_client src/otlp_grpc_client.cc
+  add_library(opentelemetry_exporter_otlp_grpc_client SHARED src/otlp_grpc_client.cc
                                                       src/otlp_grpc_utils.cc)
   set_target_properties(opentelemetry_exporter_otlp_grpc_client
                         PROPERTIES EXPORT_NAME otlp_grpc_client)
@@ -52,7 +52,7 @@ if(WITH_OTLP_GRPC)
   list(APPEND OPENTELEMETRY_OTLP_TARGETS
        opentelemetry_exporter_otlp_grpc_client)
 
-  add_library(opentelemetry_exporter_otlp_grpc
+  add_library(opentelemetry_exporter_otlp_grpc SHARED
               src/otlp_grpc_exporter.cc src/otlp_grpc_exporter_factory.cc)
 
   set_target_properties(opentelemetry_exporter_otlp_grpc
@@ -66,7 +66,7 @@ if(WITH_OTLP_GRPC)
   list(APPEND OPENTELEMETRY_OTLP_TARGETS opentelemetry_exporter_otlp_grpc)
 
   add_library(
-    opentelemetry_exporter_otlp_grpc_log
+    opentelemetry_exporter_otlp_grpc_log SHARED
     src/otlp_grpc_log_record_exporter.cc
     src/otlp_grpc_log_record_exporter_factory.cc)
 
@@ -81,7 +81,7 @@ if(WITH_OTLP_GRPC)
   list(APPEND OPENTELEMETRY_OTLP_TARGETS opentelemetry_exporter_otlp_grpc_log)
 
   add_library(
-    opentelemetry_exporter_otlp_grpc_metrics
+    opentelemetry_exporter_otlp_grpc_metrics SHARED
     src/otlp_grpc_metric_exporter.cc src/otlp_grpc_metric_exporter_factory.cc)
 
   set_target_properties(opentelemetry_exporter_otlp_grpc_metrics
@@ -97,7 +97,7 @@ if(WITH_OTLP_GRPC)
 endif()
 
 if(WITH_OTLP_HTTP)
-  add_library(opentelemetry_exporter_otlp_http_client src/otlp_http_client.cc)
+  add_library(opentelemetry_exporter_otlp_http_client SHARED src/otlp_http_client.cc)
   set_target_properties(opentelemetry_exporter_otlp_http_client
                         PROPERTIES EXPORT_NAME otlp_http_client)
   target_link_libraries(
@@ -116,7 +116,7 @@ if(WITH_OTLP_HTTP)
   list(APPEND OPENTELEMETRY_OTLP_TARGETS
        opentelemetry_exporter_otlp_http_client)
 
-  add_library(opentelemetry_exporter_otlp_http
+  add_library(opentelemetry_exporter_otlp_http SHARED
               src/otlp_http_exporter.cc src/otlp_http_exporter_factory.cc)
 
   set_target_properties(opentelemetry_exporter_otlp_http
@@ -131,7 +131,7 @@ if(WITH_OTLP_HTTP)
 
   if(WITH_LOGS_PREVIEW)
     add_library(
-      opentelemetry_exporter_otlp_http_log
+      opentelemetry_exporter_otlp_http_log SHARED
       src/otlp_http_log_record_exporter.cc
       src/otlp_http_log_record_exporter_factory.cc)
 
@@ -147,7 +147,7 @@ if(WITH_OTLP_HTTP)
 
   endif()
   add_library(
-    opentelemetry_exporter_otlp_http_metric
+    opentelemetry_exporter_otlp_http_metric SHARED
     src/otlp_http_metric_exporter.cc src/otlp_http_metric_exporter_factory.cc)
 
   set_target_properties(opentelemetry_exporter_otlp_http_metric

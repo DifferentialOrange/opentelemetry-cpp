@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 add_library(
-  opentelemetry_metrics
+  opentelemetry_metrics SHARED
   async_instruments.cc
   meter_provider.cc
   meter.cc

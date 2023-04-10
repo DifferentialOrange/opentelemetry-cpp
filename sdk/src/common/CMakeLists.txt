@@ -8,7 +8,7 @@ else()
   list(APPEND COMMON_SRCS platform/fork_unix.cc)
 endif()
 
-add_library(opentelemetry_common ${COMMON_SRCS})
+add_library(opentelemetry_common SHARED ${COMMON_SRCS})
 
 set_target_properties(opentelemetry_common PROPERTIES EXPORT_NAME common)
 
